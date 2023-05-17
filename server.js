@@ -1,14 +1,16 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) =>{
-    console.log("run request ..");
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<h3>Hello world!</h3>');
-    res.write('<h2>From Can & beginner nodejs </h2>');
-    res.end();
-    
+const app = express();
+const port = 8080
+
+app.get("/", (req, res) => {
+    res.send("Hello world!")
+});
+
+app.get("/about", (req, res) => {
+    res.send(`I'm Can nè`);
 })
 
-server.listen(3000, 'localhost', () => {
-    console.log('Nodejs server is running on port: 3000')
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
 })
